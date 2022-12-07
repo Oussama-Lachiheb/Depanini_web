@@ -1,0 +1,43 @@
+{% extends 'front.html.twig' %}
+{% block title %}Prestataire{% endblock %}
+
+{% block body %}
+    <h1>Prestataire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ prestataire.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ prestataire.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ prestataire.localisation }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ prestataire.email }}</td>
+            </tr>
+            <tr>
+                <th>MotDePasse</th>
+                <td>{{ prestataire.motDePasse }}</td>
+            </tr>
+            <tr>
+                <th>PrixHeure</th>
+                <td>{{ prestataire.prixHeure }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_prestataire_index') }}">back to list</a>
+
+    <a href="{{ path('app_prestataire_edit', {'idPrestataire': prestataire.idPrestataire}) }}">edit</a>
+    <a href="{{ path('app-rated', {'idPrestataire': prestataire.idPrestataire}) }}">Ton rate</a>
+    <a href="{{ path('app_prestataire_edit', {'idPrestataire': prestataire.idPrestataire}) }}">Modifier ton compte</a>
+    {{ include('prestataire/_delete_form.html.twig') }}
+
+{% endblock %}

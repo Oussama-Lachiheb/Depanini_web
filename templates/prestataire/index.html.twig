@@ -1,0 +1,53 @@
+{% extends 'back.html.twig' %}
+{% block title %}Prestataire index{% endblock %}
+
+{% block body %}
+    <h1>Prestataire index</h1>
+    <a href="{{ path('app_prestataire_toprate')}}">Top Rated</a>
+
+   <p> la somme de prestataire est : {{ nb }} <p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdPrestataire</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Localisation</th>
+                <th>Email</th>
+                <th>MotDePasse</th>
+                <th>PrixHeure</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prestataire in prestataires %}
+            <tr>
+                <td>{{ prestataire.idPrestataire }}</td>
+                <td>{{ prestataire.nom }}</td>
+                <td>{{ prestataire.prenom }}</td>
+                <td>{{ prestataire.localisation }}</td>
+                <td>{{ prestataire.email }}</td>
+                <td>{{ prestataire.motDePasse }}</td>
+                <td>{{ prestataire.prixHeure }}</td>
+                <td>
+                    <a href="{{ path('app_prestataire_show', {'idPrestataire': prestataire.idPrestataire}) }}">show</a>
+                    <a href="{{ path('app-rated', {'idPrestataire': prestataire.idPrestataire}) }}">Rate</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="display: flex;justify-content: center">
+        {{ knp_pagination_render(prestataires) }}
+    </div>
+{% endblock %}
+{% block css %}
+{% endblock %}
+
+
+

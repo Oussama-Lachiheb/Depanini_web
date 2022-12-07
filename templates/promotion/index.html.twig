@@ -1,0 +1,43 @@
+{% extends 'back.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Promotion index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdPromo</th>
+                <th>PrixHeurePres</th>
+                <th>TauxPromo</th>
+                <th>PrixHeureFinal</th>
+                <th>DateDebuPromo</th>
+                <th>DateFinPromo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for promotion in promotions %}
+            <tr>
+                <td>{{ promotion.idPromo }}</td>
+                <td>{{ promotion.prixHeurePres }}</td>
+                <td>{{ promotion.tauxPromo }}</td>
+                <td>{{ promotion.prixHeureFinal }}</td>
+                <td>{{ promotion.dateDebuPromo ? promotion.dateDebuPromo|date('Y-m-d') : '' }}</td>
+                <td>{{ promotion.dateFinPromo ? promotion.dateFinPromo|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_promotion_show', {'idPromo': promotion.idPromo}) }}">show</a>
+                    <a href="{{ path('app_promotion_edit', {'idPromo': promotion.idPromo}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_promotion_new') }}">Create new</a>
+{% endblock %}

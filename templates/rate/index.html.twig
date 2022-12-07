@@ -1,0 +1,39 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Rate index{% endblock %}
+
+{% block body %}
+    <h1>Rate index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rate</th>
+                <th>Client</th>
+                <th>Prestataire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rate in rates %}
+            <tr>
+                <td>{{ rate.id }}</td>
+                <td>{{ rate.rate }}</td>
+                <td>{{ rate.idClient.nom }}</td>
+                <td>{{ rate.idPrestataire.nom }}</td>
+                <td>
+                    <a href="{{ path('app_rate_show', {'id': rate.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="display: flex;justify-content: center">
+        {{ knp_pagination_render(rates) }}
+    </div>
+{% endblock %}

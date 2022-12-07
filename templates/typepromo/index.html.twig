@@ -1,0 +1,35 @@
+{% extends 'back.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Typepromo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdType</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typepromo in typepromos %}
+            <tr>
+                <td>{{ typepromo.idType }}</td>
+                <td>{{ typepromo.description }}</td>
+                <td>
+                    <a href="{{ path('app_typepromo_show', {'idType': typepromo.idType}) }}">show</a>
+                    <a href="{{ path('app_typepromo_edit', {'idType': typepromo.idType}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_typepromo_new') }}">Create new</a>
+{% endblock %}

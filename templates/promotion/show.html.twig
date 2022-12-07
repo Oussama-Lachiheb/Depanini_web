@@ -1,0 +1,42 @@
+{% extends 'back.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Promotion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdPromo</th>
+                <td>{{ promotion.idPromo }}</td>
+            </tr>
+            <tr>
+                <th>PrixHeurePres</th>
+                <td>{{ promotion.prixHeurePres }}</td>
+            </tr>
+            <tr>
+                <th>TauxPromo</th>
+                <td>{{ promotion.tauxPromo }}</td>
+            </tr>
+            <tr>
+                <th>PrixHeureFinal</th>
+                <td>{{ promotion.prixHeureFinal }}</td>
+            </tr>
+            <tr>
+                <th>DateDebuPromo</th>
+                <td>{{ promotion.dateDebuPromo ? promotion.dateDebuPromo|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFinPromo</th>
+                <td>{{ promotion.dateFinPromo ? promotion.dateFinPromo|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_promotion_index') }}">back to list</a>
+
+    <a href="{{ path('app_promotion_edit', {'idPromo': promotion.idPromo}) }}">edit</a>
+
+    {{ include('promotion/_delete_form.html.twig') }}
+{% endblock %}

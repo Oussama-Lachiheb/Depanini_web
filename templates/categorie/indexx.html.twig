@@ -1,0 +1,30 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+    <h1>Categorie index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.nom }}</td>
+                <td>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="display: flex;justify-content: center">
+        {{ knp_pagination_render(categories) }}
+    </div>
+{% endblock %}

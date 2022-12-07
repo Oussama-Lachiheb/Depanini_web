@@ -1,0 +1,70 @@
+{% extends 'back.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Create new Promotion</h1>
+
+    {{ form_start(form , {'attr': {'novalidate':'novalidate'}}) }}
+    <table>
+        <tr>
+            <td> {{ form_label(form.prixHeurePres) }}</td>
+            <td>{{ form_widget(form.prixHeurePres,{'attr':{'id':'promotion_prixHeurePres'}}) }}</td>
+            <td>{{ form_errors(form.prixHeurePres) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.tauxPromo) }}</td>
+            <td>{{ form_widget(form.tauxPromo,{'attr':{'id':'promotion_tauxPromo'}}) }}</td>
+            <td>{{ form_errors(form.tauxPromo) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.prixHeureFinal) }}</td>
+            <td>{{ form_widget(form.prixHeureFinal,{'attr':{'id':'promotion_prixHeureFinal'}}) }}</td>
+            <td>{{ form_errors(form.prixHeureFinal) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.dateDebuPromo) }}</td>
+            <td>{{ form_widget(form.dateDebuPromo) }}</td>
+            <td>{{ form_errors(form.dateDebuPromo) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.dateFinPromo) }}</td>
+            <td>{{ form_widget(form.dateFinPromo) }}</td>
+            <td>{{ form_errors(form.dateFinPromo) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.idType) }}</td>
+            <td>{{ form_widget(form.idType) }}</td>
+            <td>{{ form_errors(form.idType) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.idService) }}</td>
+            <td>{{ form_widget(form.idService) }}</td>
+            <td>{{ form_errors(form.idService) }}</td>
+        </tr>
+    </table>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+
+    <script>
+
+        $(document).ready(function(){
+            $("#promotion_prixHeureFinal").keydown(function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            $("#promotion_tauxPromo").keyup(function(){
+                var prixHeure = document.getElementById("promotion_prixHeurePres").value
+                var tauxPromo = document.getElementById("promotion_tauxPromo").value
+                var finalValue = document.getElementById("promotion_prixHeureFinal")
+                finalValue.value = prixHeure - ((prixHeure * tauxPromo) / 100)
+            });
+        });
+
+    </script>
+
+    <a href="{{ path('app_promotion_index') }}">back to list</a>
+{% endblock %}
+

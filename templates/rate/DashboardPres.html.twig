@@ -1,0 +1,30 @@
+{% extends 'front.html.twig' %}
+{% block title %}Rate index{% endblock %}
+
+{% block body %}
+    <h1>Rate index</h1>
+    <p>Ton rate est : {{ moy }}</p>
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>Rate</th>
+            <th>Client</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for rate in ratess %}
+            <tr>
+                <td>{{ rate.rate }}</td>
+                <td>{{ rate.idClient.nom }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
