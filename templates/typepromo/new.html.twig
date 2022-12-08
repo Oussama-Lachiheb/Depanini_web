@@ -1,0 +1,11 @@
+{% extends 'baseback.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Create new Typepromo</h1>
+
+    {{ include('typepromo/_form.html.twig') }}
+
+    <a href="{{ path('app_typepromo_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'baseback.html.twig' %}
+{% block body %}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    {{ form_widget(form) }}
+    <td>{{ form_errors(form) }}</td>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+{% endblock %}
