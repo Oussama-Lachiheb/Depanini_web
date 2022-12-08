@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+<table class="table">
+    <tbody>
+<section class="services">
+    {% for service in services %}
+
+        <tr>
+            <article>
+                <h2>{{ service.nomService }}</h2>
+                <div class="metadata">Ecrit le {{ service.createdAt | date('d/m/Y') }} à {{ service.createdAt | date('H:i')}} dans la categorie {{ service.categorie.nomCategorie }}</div>
+                <div class="content">
+                    <img src="{{ service.image }}" width="350" height="150" alt="">
+                    <h6>Prestaire name</h6>
+                    <p>{{ service.DescriptionService | raw }}</p>
+                    <p>Prix/heure : {{ service.PrixHeure }}</p>
+                    <a href="{{ path('service_show', {'id':service.id}) }}" class="btn btn-primary">Lire la suite</a>
+                </div>
+            </article>
+        </tr>
+    {% endfor %}
+</section>
+    </tbody>
+</table>
+
+{% endblock %}

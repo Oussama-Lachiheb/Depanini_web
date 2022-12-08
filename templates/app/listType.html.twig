@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter un type de reclamation !{% endblock %}
+
+{% block body %}
+<h1 class="text-white font-weight-bold">Liste des type des reclamations !</h1>
+
+<table border="1px">
+
+    <tr>
+        Type de reclamation
+    </tr>
+
+    {% for c in listOfType %}
+        <tr>
+
+            <td>
+                {{ c.descriptionType }}
+            </td>
+            <td>
+
+                <a href="{{ path('app_delete_type',{'id':c.id}) }}"> delete </a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

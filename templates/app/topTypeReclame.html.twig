@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistique {% endblock %}
+
+{% block body %}
+
+    <h5 class="text-black font-weight-bold"> Liste des types les plus reclamés</h5>
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom du type</th>
+            <th>Nombre des reclamations</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item[1]}}</td>
+                <td>{{ item.Nombredesreclamations }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <td>
+
+            <a href="{{ path('pdf')}}" class="btn btn-primary">Exporter PDF</a>
+            <i class="fas fa-trash"></i>
+        </td>
+    </table>
+
+
+{% endblock %}

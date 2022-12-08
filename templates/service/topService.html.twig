@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistique {% endblock %}
+
+{% block body %}
+
+<h5 class="text-black font-weight-bold"> Liste des services les plus demandés</h5>
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom du service</th>
+            <th>Nombre des demandes</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item[1]}}</td>
+                <td>{{ item.Nombredesdemandes }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

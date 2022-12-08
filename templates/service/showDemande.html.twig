@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des demandes {% endblock %}
+
+{% block body %}
+
+    <h5 class="text-black font-weight-bold"> Liste des demandes</h5>
+
+{% if items | length > 0 %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Date de la demande</th>
+        <th>Description de la demande</th>
+        <th>Service demandé </th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ item.dateDemande | date('d/m/Y') }} à {{ item.dateDemande | date('H:i')}}</td>
+            <td>{{ item.descriptionDemande }}</td>
+            <td>{{ item.idService.nomService }}</td>
+
+            <td>
+
+                <a href="{{ path('demande_edit', {'id':item.id}) }}" class="btn btn-success">Editer</a>
+                <i class="fas fa-trash"></i>
+            </td>
+            <td>
+                <a href="{{ path('delete_demande', {'id':item.id}) }}" class="btn btn-danger">Annuler</a>
+                <i class="fas fa-trash"></i>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <td>
+
+        <a href="{{ path('pdf')}}" class="btn btn-primary">Exporter PDF</a>
+        <i class="fas fa-trash"></i>
+    </td>
+</table>
+{% else %}
+<p>T'as fait pas aucune demande !</p>
+{% endif %}
+{% endblock %}

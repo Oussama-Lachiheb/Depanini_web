@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <article>
+        <h2>{{ service.nomService }}</h2>
+        <div class="metadata">Ecrit le {{ service.createdAt | date('d/m/Y') }} à {{ service.createdAt | date('H:i')}} dans la categorie {{ service.categorie.nomCategorie }}</div>
+        <div class="content">
+            <img src="{{ service.image }}" width="350" height="150" alt="">
+            <h6>Prestaire name</h6>
+            <p>{{ service.DescriptionService | raw }}</p>
+            <p>Prix/heure : {{ service.PrixHeure }} TND</p>
+            <a href="{{ path('add_demande', {'id':service.id}) }}" class="btn btn-primary">Demander</a>
+        </div>
+</article>
+{% endblock %}

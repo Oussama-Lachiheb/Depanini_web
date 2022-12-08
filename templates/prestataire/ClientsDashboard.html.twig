@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block title %}Prestataire By Prix heure{% endblock %}
+
+{% block body %}
+    <div>
+    <input type="text" name="nom">
+    <input type="submit" value="recherche">
+    </div>
+    <h1>Prestataire By Prix heure</h1>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Localisation</th>
+            <th>PrixHeure</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for prestataire in prestataires %}
+            <tr>
+
+                <td>{{ prestataire.nom }}</td>
+                <td>{{ prestataire.prenom }}</td>
+                <td>{{ prestataire.localisation }}</td>
+                <td>{{ prestataire.prixHeure }}</td>
+                 <td>
+                <td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 500px; margin">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-6">
+                    <table id="tablid">
+                        <tr>
+                            <th>
+                                <button type="button"><a href="{{ path('app_rate_new') }}">Rate</a></button>
+                            </th>
+                            <th>
+                                <button type="button"><a href="{{ path('app_prestataire_toprated')}}">TopRated</a></button>
+                            </th>
+                        </tr>
+                    </table>
+
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
+{% block css %}
+{% endblock %}
